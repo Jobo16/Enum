@@ -1,14 +1,10 @@
-
-//定义外部接口
-interface orderState {
+interface OrderState {
     OrderStateMachine nextState();
+
     OrderStateMachine prevState();
 }
 
-
-//枚举类实现接口，override 重写方法
-
-public enum OrderStateMachine implements orderState {
+public enum OrderStateMachine implements OrderState {
     DISPATCHING {
         @Override
         public OrderStateMachine nextState() {
@@ -19,30 +15,31 @@ public enum OrderStateMachine implements orderState {
         public OrderStateMachine prevState() {
             return this;
         }
-
     },
     DELIVERING {
         @Override
-        public OrderStateMachine nextState(){
+        public OrderStateMachine nextState() {
             return RECEIVED;
         }
 
         @Override
-        public OrderStateMachine prevState(){
+        public OrderStateMachine prevState() {
             return DISPATCHING;
         }
+
     },
+
     RECEIVED {
         @Override
-        public OrderStateMachine nextState(){
+        public OrderStateMachine nextState() {
             return this;
         }
 
         @Override
-        public OrderStateMachine prevState(){
+        public OrderStateMachine prevState() {
             return DELIVERING;
         }
+
+
     }
 }
-
-
