@@ -2,7 +2,7 @@ import java.math.BigDecimal;
 
 // 定义order 类，写好getter setter方法。
 public class Order {
-    private OrderStateMachine stateMachine = OrderStateMachine.DISPATCHING;
+    private OrderState stateMachine = OrderStateMachine.DISPATCHING;
     private String name;
     private BigDecimal amount;
     // 构造方法

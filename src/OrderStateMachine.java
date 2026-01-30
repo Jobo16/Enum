@@ -1,45 +1,46 @@
+//写一个有两个方法的接口
+
 interface OrderState {
     OrderStateMachine nextState();
-
     OrderStateMachine prevState();
 }
 
+
+//写实现具体方法的enum子类
+
 public enum OrderStateMachine implements OrderState {
-    DISPATCHING {
+    DISPATCHING{
         @Override
-        public OrderStateMachine nextState() {
+        public OrderStateMachine nextState(){
             return DELIVERING;
         }
-
         @Override
-        public OrderStateMachine prevState() {
+        public OrderStateMachine prevState(){
             return this;
         }
+
     },
-    DELIVERING {
+
+    DELIVERING{
         @Override
-        public OrderStateMachine nextState() {
+        public OrderStateMachine nextState(){
             return RECEIVED;
         }
-
         @Override
-        public OrderStateMachine prevState() {
+        public OrderStateMachine prevState(){
             return DISPATCHING;
         }
 
     },
 
-    RECEIVED {
+    RECEIVED{
         @Override
-        public OrderStateMachine nextState() {
+        public OrderStateMachine nextState(){
             return this;
         }
-
         @Override
-        public OrderStateMachine prevState() {
+        public OrderStateMachine prevState(){
             return DELIVERING;
         }
-
-
     }
 }
