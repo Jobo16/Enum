@@ -1,8 +1,8 @@
 //写一个有两个方法的接口
 
 interface OrderState {
-    OrderStateMachine nextState();
-    OrderStateMachine prevState();
+    OrderState nextState();
+    OrderState prevState();
 }
 
 
